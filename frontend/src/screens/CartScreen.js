@@ -13,8 +13,9 @@ const CartScreen = ({ match, location, history }) => {
     const dispatch = useDispatch()
 
     const cart = useSelector(state => state.cart)
+    console.log(cart)
     const { cartItems } = cart
-    
+
     useEffect(()=>{
         if(productId){
             dispatch(addToCart(productId, qty))
@@ -22,9 +23,25 @@ const CartScreen = ({ match, location, history }) => {
     }, [dispatch, productId, qty])
 
     return (
-        <div>
-            Cart
-        </div>
+        <Row>
+            <Col md={8}>
+                <h1>Shopping Cart</h1>
+                {console.log(cartItems.length)}
+                {cartItems.length ===0 ? (
+                    <Message>
+                        your cart is empty <Link to='/'>Go Back</Link>
+                    </Message>
+                ): (
+                    <ListGroup variant='flush'></ListGroup>
+                )}
+            </Col>
+            <Col md={2}>
+                
+            </Col>
+            <Col md={2}>
+                
+            </Col>
+        </Row>
     )
 }
 
