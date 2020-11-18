@@ -6,6 +6,7 @@ import Order from '../models/orderModel.js'
 //@access  private
 
 const addOrderItems = asyncHandler(async (req,res) => {
+    console.log("requested to orders")
     const {
         orderItems,
         shippingAddress,
@@ -30,6 +31,7 @@ const addOrderItems = asyncHandler(async (req,res) => {
             shippingPrice,
             totalPrice
         })
+        console.log(order);
         const createdOrder = await order.save()
         res.status(201).json(createdOrder)
     }
